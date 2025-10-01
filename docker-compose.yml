@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  exiftool-rest:
+    build:
+      context: .           # usa os arquivos do próprio repositório
+      dockerfile: Dockerfile
+    container_name: exiftool-rest
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+    # Opção B: expor no host (use 8088 se 8080 já está em uso)
+    ports:
+      - "8088:8080"
