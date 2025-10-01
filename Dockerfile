@@ -1,11 +1,12 @@
 FROM node:20-alpine
 
-# 👇 ExifTool precisa do Perl no Linux
+# ExifTool precisa de Perl no Linux
 RUN apk add --no-cache perl
 
 WORKDIR /app
 COPY package.json ./
-RUN npm ci --omit=dev
+# ⬇️ troquei "npm ci" por "npm install"
+RUN npm install --omit=dev
 COPY server.js ./
 
 ENV NODE_ENV=production
